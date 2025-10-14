@@ -16,12 +16,14 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Programs", href: "#programs" },
-    { name: "Contact", href: "#contact" },
-  ]
+  { name: "Home", href: "#home" },
+  { name: "About Us", href: "#about" },
+  { name: "Good Governance", href: "#good-governance" },
+  { name: "Programs and Services", href: "#programs-services" },
+  { name: "Resources", href: "#resources" },
+  { name: "GAD Corner", href: "#gad-corner" },
+  { name: "Contact Us", href: "#contact" },
+];
 
   return (
     <header
