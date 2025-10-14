@@ -6,6 +6,7 @@ import Image from "next/image"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,14 +17,15 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Good Governance", href: "#good-governance" },
-  { name: "Programs and Services", href: "#programs-services" },
-  { name: "Resources", href: "#resources" },
-  { name: "GAD Corner", href: "#gad-corner" },
-  { name: "Contact Us", href: "#contact" },
-];
+    { name: "Home", href: "#home" },
+    { name: "About Us", href: "#about" },
+    { name: "Good Governance", href: "#good-governance" },
+    { name: "Programs and Services", href: "#programs-services" },
+    { name: "Resources", href: "#resources" },
+    { name: "GAD Corner", href: "#gad-corner" },
+    { name: "Contact Us", href: "#contact" },
+    { name: "NTTC Application", href: "https://tesda-r7-forms.vercel.app/instructions.html" },
+  ]
 
   return (
     <header
@@ -44,7 +46,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -58,12 +60,46 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile menu button */}
-          <button className="md:hidden p-2 text-gray-700 hover:text-blue-600">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          {/* Hamburger Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+          >
+            <svg
+              className={`w-6 h-6 transform transition-transform duration-300 ${
+                isMenuOpen ? "rotate-90" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col items-start gap-4 py-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full text-sm font-medium text-gray-700 hover:text-blue-600 px-2 transition-all duration-200"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </header>

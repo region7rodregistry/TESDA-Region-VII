@@ -44,16 +44,17 @@ export default function HeroSection() {
 
           {/* Right side image */}
 <div className="flex justify-center lg:justify-end">
-  <div className="relative w-[300px] h-[450px] lg:w-[550px] lg:h-[540px]">
+  <div className="relative w-full h-[45vh] sm:h-[86vh] lg:w-[550px] lg:h-[530px]">
     <Image
-      src="/enrollnow1.jpg" // make sure this image is in your /public folder
+      src="/enrollnow1.jpg"
       alt="TESDA Office or trainees"
       fill
-      className="rounded-2xl shadow-lg border border-blue-100 object-cover object-center"
+      className="rounded-2xl shadow-lg border border-blue-200 object-cover object-center"
       priority
     />
   </div>
 </div>
+
 
         </div>
       </div>
