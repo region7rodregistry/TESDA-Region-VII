@@ -20,7 +20,7 @@ export default function Header() {
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Good Governance", href: "#good-governance" },
-    { name: "Programs and Services", href: "#programs-services" },
+    { name: "Programs and Services", href: "#programs" },
     { name: "Resources", href: "#resources" },
     { name: "GAD Corner", href: "#gad-corner" },
     { name: "Contact Us", href: "#contact" },

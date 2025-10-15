@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
 
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
   description:
     "Technical Education and Skills Development Authority Region VII - Building the Nation's Skilled Workforce",
   generator: "v0.app",
+  icons: {
+    icon: "/t7logo.png", // Path relative to public/
+  },
+
+   
 }
 
 export default function RootLayout({

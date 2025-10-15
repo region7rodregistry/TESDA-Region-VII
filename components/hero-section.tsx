@@ -10,26 +10,23 @@ export default function HeroSection() {
 
     >
       {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('./office.jpg')", // <-- put your background image here
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/75 to-white/85" />
-      </div>
+      <div
+  className="absolute inset-0 bg-cover bg-center blur-sm"
+  style={{
+    backgroundImage: "url('./office.jpg')",
+  }}
+/>
+
 
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left side text */}
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
               Empowering Central Visayas Through Technical Education and Skills Development
             </h1>
-            <p className="text-lg sm:text-xl text-gray-700 mb-8">
+            <p className="text-lg sm:text-xl text-white-700 mb-8">
               TESDA Region VII – Building the Nation's Skilled Workforce.
             </p>
             <Link href="#about">
@@ -54,8 +51,6 @@ export default function HeroSection() {
     />
   </div>
 </div>
-
-
         </div>
       </div>
 

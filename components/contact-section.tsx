@@ -25,22 +25,24 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="min-h-screen py-10 bg-gray-50 flex items-center">
-      <div className="container mx-auto px-4 sm:px-4 lg:px-6">
-        <div className="max-w-2xl mx-auto text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
-          <div className="w-16 h-1 bg-blue-600 mx-auto mb-4" />
-          <p className="text-base text-gray-700">
-            Get in touch with us for inquiries about our programs, services, or any assistance you may need.
+    <section id="contact" className="h-screen py-3 sm:py-4 md:py-6 bg-gray-50 flex flex-col justify-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Header */}
+        <div className="max-w-2xl mx-auto text-center mb-3 sm:mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1.5 sm:mb-2">Contact Us</h2>
+          <div className="w-12 sm:w-16 h-1 bg-blue-600 mx-auto mb-1.5 sm:mb-2" />
+          <p className="text-xs sm:text-sm md:text-base text-gray-700">
+            Get in touch with us for inquiries about our programs and services.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-5 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <Card className="p-4 border border-gray-200 bg-white">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <Card className="p-2.5 sm:p-3 md:p-4 border border-gray-200 bg-white">
+            <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-2.5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-1">
+                <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-900 mb-0.5 sm:mb-1">
                   Name
                 </label>
                 <input
@@ -50,13 +52,13 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
+                  className="w-full px-2 sm:px-2.5 py-1 sm:py-1.5 text-xs sm:text-sm border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
                   placeholder="Your full name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-900 mb-0.5 sm:mb-1">
                   Email
                 </label>
                 <input
@@ -66,13 +68,13 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
+                  className="w-full px-2 sm:px-2.5 py-1 sm:py-1.5 text-xs sm:text-sm border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-1">
+                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-900 mb-0.5 sm:mb-1">
                   Message
                 </label>
                 <textarea
@@ -81,15 +83,15 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200 resize-none"
+                  rows={2}
+                  className="w-full px-2 sm:px-2.5 py-1 sm:py-1.5 text-xs sm:text-sm border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200 resize-none"
                   placeholder="How can we help you?"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm py-2"
+                className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 text-xs sm:text-sm py-1.5 sm:py-2"
               >
                 Send Message
               </Button>
@@ -97,13 +99,13 @@ export default function ContactSection() {
           </Card>
 
           {/* Contact Information */}
-          <div className="space-y-4">
-            <Card className="p-4 border border-gray-200 bg-white">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Office Address</h3>
-              <div className="space-y-3 text-gray-700 text-sm">
-                <div className="flex items-start gap-2">
+          <div className="space-y-2.5 sm:space-y-3">
+            <Card className="p-2.5 sm:p-3 md:p-4 border border-gray-200 bg-white">
+              <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2">Office Address</h3>
+              <div className="space-y-1.5 sm:space-y-2 text-gray-700 text-xs sm:text-sm">
+                <div className="flex items-start gap-1.5 sm:gap-2">
                   <svg
-                    className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0 mt-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -113,13 +115,13 @@ export default function ContactSection() {
                   </svg>
                   <div>
                     <p className="font-medium">TESDA Region VII</p>
-                    <p>Archbishop Reyes Avenue, Lahug<br />Cebu City, 6000<br />Central Visayas, Philippines</p>
+                    <p className="leading-tight">Archbishop Reyes Avenue, Lahug<br />Cebu City, 6000<br />Central Visayas, Philippines</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-1.5 sm:gap-2">
                   <svg
-                    className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0 mt-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -128,13 +130,13 @@ export default function ContactSection() {
                   </svg>
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p>(032) 238-3531 | (032) 232-4652  | (032) 345-1768 </p>
+                    <p className="leading-tight">(032) 238-3531 | (032) 232-4652 | (032) 345-1768</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-1.5 sm:gap-2">
                   <svg
-                    className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0 mt-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -143,29 +145,27 @@ export default function ContactSection() {
                   </svg>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p>region7@tesda.gov.ph</p>
+                    <p className="leading-tight">region7@tesda.gov.ph</p>
                   </div>
                 </div>
               </div>
             </Card>
 
-            {/* Map Placeholder */}
-          <Card className="p-3 border border-gray-200 bg-white overflow-hidden">
-  <div className="w-full h-60 rounded-lg overflow-hidden">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1109.452325318326!2d123.90595444923379!3d10.326286211848391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99922c77c39b1%3A0xb6d08b824843b69b!2sTechnical%20Education%20and%20Skills%20Development%20Authority%20-%20Regional%20Office%20VII!5e0!3m2!1sen!2sph!4v1760432625123!5m2!1sen!2sph"
-      width="100%"
-      height="100%"
-      allowFullScreen
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      className="rounded-lg border-0"
-      style={{ border: 0 }}
-    ></iframe>
-  </div>
-</Card>
-
-
+            {/* Map */}
+            <Card className="p-1.5 sm:p-2 border border-gray-200 bg-white overflow-hidden">
+              <div className="w-full h-32 sm:h-40 md:h-48 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1109.452325318326!2d123.90595444923379!3d10.326286211848391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99922c77c39b1%3A0xb6d08b824843b69b!2sTechnical%20Education%20and%20Skills%20Development%20Authority%20-%20Regional%20Office%20VII!5e0!3m2!1sen!2sph!4v1760432625123!5m2!1sen!2sph"
+                  width="100%"
+                  height="100%"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-lg border-0"
+                  style={{ border: 0 }}
+                ></iframe>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
