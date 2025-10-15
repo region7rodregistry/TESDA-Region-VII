@@ -4,19 +4,19 @@ export default function AboutSection() {
   const coverage = [
     {
       title: "Cebu",
-      description: "PTC-Minglanilla, PTC-Daan Bantayan, PTC-Carmen, PTC-Toledo, PTC-Samboan",
+      description: "A hub for Information Technology, Electronics, and Tourism. Cebu’s urban centers focus heavily on ICT and hospitality skills training, supporting BPOs and tourism",
     },
     {
       title: "Bohol",
-      description: "PTC-Bilar, PTC-Pilar, PTC-Inabanga, PTC-Tubigon, PTC-Jagna",
+      description: "Tourism, Agriculture, and Maritime sectors are key. TESDA training focuses on hospitality, eco-tourism, farming, and seafaring skills for coastal communities",
     },
     {
       title: "Siquijor",
-      description: "Lazi Technical Institute, PTC-Siquijor",
+      description: "Primarily Tourism, Handicrafts, and Agriculture. TESDA emphasizes skills for sustainable tourism, local crafts, and small-scale farmingr",
     },
     {
       title: "Negros Oriental",
-      description: "PTC-Dumaguete",
+      description: "Agriculture, Fishery, and Tourism dominate. TESDA programs often center on agribusiness, aquaculture, and eco-tourism to support rural livelihoods and coastal communities",
     },
   ]
 
