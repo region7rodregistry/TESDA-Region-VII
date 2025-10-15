@@ -11,10 +11,33 @@ export default function ContactSection() {
     email: "",
     message: "",
   })
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    setLoading(true)
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        alert("✅ Message sent successfully!")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        const data = await res.json()
+        console.error("Error:", data)
+        alert("❌ Failed to send message. Please try again later.")
+      }
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert("⚠️ Something went wrong while sending your message.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -91,14 +114,19 @@ export default function ContactSection() {
 
               <Button
                 type="submit"
-                className="w-full bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 text-xs sm:text-sm py-1.5 sm:py-2"
+                disabled={loading}
+                className={`w-full border border-blue-600 transition-all duration-300 text-xs sm:text-sm py-1.5 sm:py-2 ${
+                  loading
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-white text-blue-600 hover:bg-blue-600 hover:text-white"
+                }`}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>
 
-          {/* Contact Information */}
+          {/* Contact Information (unchanged) */}
           <div className="space-y-2.5 sm:space-y-3">
             <Card className="p-2.5 sm:p-3 md:p-4 border border-gray-200 bg-white">
               <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2">Office Address</h3>
@@ -115,7 +143,13 @@ export default function ContactSection() {
                   </svg>
                   <div>
                     <p className="font-medium">TESDA Region VII</p>
-                    <p className="leading-tight">Archbishop Reyes Avenue, Lahug<br />Cebu City, 6000<br />Central Visayas, Philippines</p>
+                    <p className="leading-tight">
+                      Archbishop Reyes Avenue, Lahug
+                      <br />
+                      Cebu City, 6000
+                      <br />
+                      Central Visayas, Philippines
+                    </p>
                   </div>
                 </div>
 
@@ -126,7 +160,12 @@ export default function ContactSection() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
                   </svg>
                   <div>
                     <p className="font-medium">Phone</p>
@@ -141,7 +180,12 @@ export default function ContactSection() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                   <div>
                     <p className="font-medium">Email</p>
@@ -162,7 +206,6 @@ export default function ContactSection() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="rounded-lg border-0"
-                  style={{ border: 0 }}
                 ></iframe>
               </div>
             </Card>
