@@ -33,7 +33,8 @@ export default function UploadPage() {
 
       // Target sheets
       const targetSheets = ["2025 Bohol", "2025 Cebu", "2025 Negros Oriental", "2025 Siquijor"]
-
+      // Target rows
+      const targetRows = ["2"] // Reverting to original for clarification, though the logic below handles the range
       // Target columns (B, G, T, W, J, I, M, N)
       const targetColumns = ["B", "G", "T", "W", "J", "I", "M", "N"]
 
@@ -54,7 +55,8 @@ export default function UploadPage() {
         // Extract only target columns and filter rows where Column B is not empty
         const filteredData: SheetData = []
 
-        for (let i = 0; i < jsonData.length; i++) {
+        // Start from the second row (index 1), assuming jsonData[0] is the header
+        for (let i = 1; i < jsonData.length; i++) {
           const row = jsonData[i] as unknown[]
 
           // Column B is index 1 (A=0, B=1, ...)
