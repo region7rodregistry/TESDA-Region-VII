@@ -56,7 +56,7 @@ export default function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6">
             <StatItem number="50K+" label="Graduates" />
             <StatItem number="200+" label="Programs" />
             <StatItem number="7" label="Provinces" />
@@ -76,7 +76,7 @@ export default function HeroSection() {
             />
 
             {/* Floating badge */}
-            <div className="absolute -bottom-5 -left-5 bg-white p-4 rounded-2xl shadow-xl border border-blue-100 max-w-[220px]">
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-auto sm:-bottom-5 sm:-left-5 bg-white p-4 rounded-2xl shadow-xl border border-blue-100 max-w-[calc(100%-2.5rem)] sm:max-w-[220px]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img
@@ -105,7 +105,7 @@ export default function HeroSection() {
 
 function StatItem({ number, label }: { number: string; label: string }) {
   return (
-    <div className="text-center lg:text-left">
+    <div className="text-center">
       <div className="text-lg sm:text-xl xl:text-2xl font-bold text-white">
         {number}
       </div>
