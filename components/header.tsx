@@ -38,7 +38,9 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14">
-              <Image src="/t7logo.png" alt="TESDA Region VII Logo" fill className="object-contain" />
+              <Link href="/admin">
+                <Image src="/t7logo.png" alt="TESDA Region VII Logo" fill className="object-contain" />
+              </Link>
             </div>
             <div className="hidden sm:block">
               <div className="text-sm sm:text-base font-bold text-gray-900">TESDA Region VII</div>
