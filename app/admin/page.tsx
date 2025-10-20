@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { createBrowserClient } from "@supabase/ssr"
+import { useRouter } from "next/navigation"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
@@ -11,6 +12,7 @@ export default function LoginForm() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const router = useRouter()
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -34,6 +36,7 @@ export default function LoginForm() {
         setSuccess(true)
         setEmail("")
         setPassword("")
+        router.push("/admin/admindash")
       }
     } catch (err) {
       setError("An unexpected error occurred")
