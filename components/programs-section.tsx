@@ -16,6 +16,7 @@ export default function ProgramsSection() {
           />
         </svg>
       ),
+      link: "#scholarships",
     },
     {
       title: "Assessment & Certification",
@@ -31,6 +32,7 @@ export default function ProgramsSection() {
           />
         </svg>
       ),
+      link: "#assessment-certification",
     },
     {
       title: "Training Centers",
@@ -46,6 +48,7 @@ export default function ProgramsSection() {
           />
         </svg>
       ),
+      link: "/display",
     },
     {
       title: "NTTC Monitoring",
@@ -61,6 +64,7 @@ export default function ProgramsSection() {
           />
         </svg>
       ),
+      link: "#nttc-monitoring",
     },
   ]
 
@@ -77,20 +81,21 @@ export default function ProgramsSection() {
       {/* Grid */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         {programs.map((program, index) => (
-          <Card
-            key={index}
-            className="flex flex-col justify-start items-center p-3 sm:p-4 md:p-6 border-2 border-blue-200 hover:border-blue-600 transition-all duration-300 hover:shadow-lg bg-white h-full"
-          >
-            <div className="text-blue-600 mb-2 sm:mb-3">
-              <svg className="w-8 h-8 sm:w-9 md:w-10 sm:h-9 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {program.icon.props.children}
-              </svg>
-            </div>
-            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2 text-center">{program.title}</h3>
-            <p className="text-gray-600 text-xs sm:text-sm md:text-base text-center leading-snug">
-              {program.description}
-            </p>
-          </Card>
+          <a key={index} href={program.link} className="block">
+            <Card
+              className="flex flex-col justify-start items-center p-3 sm:p-4 md:p-6 border-2 border-blue-200 hover:border-blue-600 transition-all duration-300 hover:shadow-lg bg-white h-full"
+            >
+              <div className="text-blue-600 mb-2 sm:mb-3">
+                <svg className="w-8 h-8 sm:w-9 md:w-10 sm:h-9 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {program.icon.props.children}
+                </svg>
+              </div>
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2 text-center">{program.title}</h3>
+              <p className="text-gray-600 text-xs sm:text-sm md:text-base text-center leading-snug">
+                {program.description}
+              </p>
+            </Card>
+          </a>
         ))}
       </div>
     </section>
