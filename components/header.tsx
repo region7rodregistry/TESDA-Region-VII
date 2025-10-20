@@ -7,6 +7,7 @@ import Image from "next/image"
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +30,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        isScrolled ? "shadow-sm border-b-2 border-blue-600" : "border-b border-gray-200"
-      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled && !isHovered ? "-translate-y-full shadow-sm border-b-2 border-blue-600" : "translate-y-0 border-b border-gray-200"}`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">

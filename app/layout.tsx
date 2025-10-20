@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 
 const inter = Inter({
@@ -31,9 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased min-h-screen`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
+        <ScrollToTopButton />
       </body>
     </html>
   )

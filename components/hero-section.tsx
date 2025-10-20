@@ -6,56 +6,110 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-     className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
-
+      className="relative flex items-center justify-center 
+      h-screen
+      overflow-hidden"
     >
-      {/* Background image with overlay */}
-      <div
-  className="absolute inset-0 bg-cover bg-center blur-sm"
-  style={{
-    backgroundImage: "url('./office.jpg')",
-  }}
-/>
+      <video
+        src="/bluememo.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black opacity-50" /> {/* Dark overlay */}
 
+      {/* Content container */}
+      <div className="container relative z-10 mx-auto px-6 sm:px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full pt-16 sm:pt-20">
+        {/* Left column */}
+        <div className="flex flex-col justify-center text-center lg:text-left space-y-5 md:space-y-6 w-full lg:w-1/2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight text-white">
+            Empowering{" "}
+            <span className="text-blue-300">Central Visayas</span> Through
+            Technical Education
+          </h1>
 
-      {/* Main content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Left side text */}
-          <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
-              Empowering Central Visayas Through Technical Education and Skills Development
-            </h1>
-            <p className="text-lg sm:text-xl text-white-700 mb-8">
-              TESDA Region VII – Building the Nation's Skilled Workforce.
-            </p>
-            <Link href="#about">
+          <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Building the nation's skilled workforce through quality training and certification programs.
+          </p>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+            <Link href="#about" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
+                className="bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl font-semibold w-full"
               >
                 Learn More
               </Button>
             </Link>
+            <Link href="#programs" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-300 text-blue-300 hover:bg-blue-50/20 transition-all duration-300 text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl font-semibold w-full"
+              >
+                View Programs
+              </Button>
+            </Link>
           </div>
 
-          {/* Right side image */}
-<div className="flex justify-center lg:justify-end">
-  <div className="relative w-full h-[45vh] sm:h-[86vh] lg:w-[550px] lg:h-[530px]">
-    <Image
-      src="/enrollnow1.jpg"
-      alt="TESDA Office or trainees"
-      fill
-      className="rounded-2xl shadow-lg border border-blue-200 object-cover object-center"
-      priority
-    />
-  </div>
-</div>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6">
+            <StatItem number="50K+" label="Graduates" />
+            <StatItem number="200+" label="Programs" />
+            <StatItem number="7" label="Provinces" />
+          </div>
+        </div>
+
+        {/* Right column (image) */}
+        <div className="relative w-full lg:w-1/2 flex justify-center items-center">
+          <div className="relative w-[85%] md:w-[80%] xl:w-[70%] aspect-[4/3] max-h-[65vh]">
+            <div className="absolute inset-0 bg-blue-600 rounded-3xl opacity-10 blur-xl" />
+            <Image
+              src="/8pointbanner.jpg"
+              alt="TESDA trainees in technical education"
+              fill
+              className="rounded-3xl shadow-2xl object-contain object-center ring-2 ring-blue-100"
+              priority
+            />
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-5 -left-5 bg-white p-4 rounded-2xl shadow-xl border border-blue-100 max-w-[220px]">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img
+                    src="/TUV.png" // Replace with your logo path
+                    alt="Quality Certified Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">
+                    Quality Certified
+                  </p>
+                  <p className="text-xs text-gray-500">ISO Accredited</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom blue accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400" />
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
     </section>
+  )
+}
+
+function StatItem({ number, label }: { number: string; label: string }) {
+  return (
+    <div className="text-center lg:text-left">
+      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-white">
+        {number}
+      </div>
+      <div className="text-xs sm:text-sm text-white mt-1">{label}</div>
+    </div>
   )
 }
