@@ -120,9 +120,9 @@ export default function UploadPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-20 px-4">
       <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Upload Compendium Excel File</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Manage Compendium Data</h1>
           <p className="text-gray-600">
-            Upload your Excel file to parse and store data from Bohol, Cebu, Negros Oriental, and Siquijor sheets
+            Select a category and upload an Excel file to manage compendium data for Bohol, Cebu, Negros Oriental, and Siquijor.
           </p>
         </div>
 

@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState } from "react"
-import DataUploadSection from "@/components/sections/data-upload-section"
 import ScholarshipsSection from "@/components/sections/scholarships-section"
 import PTCACSSection from "@/components/sections/ptcacs-section"
 import UTPRASSection from "@/components/sections/utpras-section"
@@ -26,7 +25,6 @@ export default function AdminDashboard() {
 
   const navigationItems = [
     { id: "dashboard", label: "Dashboard" },
-    { id: "data-upload", label: "Data Upload" },
     { id: "scholarships", label: "Scholarships" },
     { id: "ptcacs", label: "PTCACs" },
     { id: "utpras", label: "UTPRAS" },
@@ -35,8 +33,6 @@ export default function AdminDashboard() {
 
   const renderSection = () => {
     switch (activeSection) {
-      case "data-upload":
-        return <DataUploadSection />
       case "scholarships":
         return <ScholarshipsSection />
       case "ptcacs":
