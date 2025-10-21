@@ -141,7 +141,7 @@ export default function UploadPage() {
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Manage Compendium Data</h1>
           {lastUploadTimestamp && (
             <p className="text-sm sm:text-base text-gray-600 mt-1">
-              Compendium as of - {new Date(lastUploadTimestamp).toLocaleString()}
+              Compendium as of - {new Date(lastUploadTimestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           )}
           <p className="text-sm sm:text-base text-gray-600">

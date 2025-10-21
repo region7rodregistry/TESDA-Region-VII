@@ -48,7 +48,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-blue-300 text-blue-300 hover:bg-blue-50/20 transition-all duration-300 text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 lg:py-6 rounded-xl font-semibold w-full"
+                className="border-2 border-blue-300 text-black hover:bg-blue-50/20 transition-all duration-300 text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 lg:py-6 rounded-xl font-semibold w-full"
               >
                 View Programs
               </Button>

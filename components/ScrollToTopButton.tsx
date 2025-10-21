@@ -30,7 +30,7 @@ const ScrollToTopButton: React.FC = () => {
 
   return (
     <motion.button
-      className="fixed bottom-4 right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg z-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      className="fixed bottom-20 right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg z-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       onClick={scrollToTop}
       initial={{ opacity: 0, y: 100 }}
       animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
