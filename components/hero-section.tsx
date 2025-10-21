@@ -1,8 +1,51 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
+import { getHeroContent } from "@/lib/hero-service"
 
 export default function HeroSection() {
+  const [heroData, setHeroData] = useState({
+    h1Text: "Empowering Central Visayas Through Technical Education",
+    h3Text: "Building the nation's skilled workforce through quality training and certification programs.",
+    ctaButtonText: "Learn More",
+    ctaButtonLink: "#about",
+    heroImage: "/8pointbanner.jpg",
+  })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadHeroContent = async () => {
+      try {
+        const result = await getHeroContent()
+        if (result.success && result.data) {
+          setHeroData({
+            h1Text: result.data.h1_text,
+            h3Text: result.data.h3_text,
+            ctaButtonText: result.data.cta_button_text,
+            ctaButtonLink: result.data.cta_button_link,
+            heroImage: result.data.hero_image_url || "/8pointbanner.jpg",
+          })
+        }
+      } catch (err) {
+        console.error('Failed to load hero content:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadHeroContent()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="relative flex items-center justify-center min-h-screen">
+        <div className="text-white text-xl">Loading...</div>
+      </section>
+    )
+  }
   return (
     <section
       id="home"
@@ -25,23 +68,21 @@ export default function HeroSection() {
         {/* Left column - Text content */}
         <div className="flex flex-col justify-center text-center lg:text-left space-y-4 sm:space-y-5 md:space-y-6 w-full lg:w-1/2 order-1 lg:order-1">
           <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight text-white">
-            Empowering{" "}
-            <span className="text-blue-300">Central Visayas</span> Through
-            Technical Education
+            {heroData.h1Text}
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Building the nation's skilled workforce through quality training and certification programs.
+            {heroData.h3Text}
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
-            <Link href="#about" className="w-full sm:w-auto">
+            <Link href={heroData.ctaButtonLink || "/"} className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 lg:py-6 rounded-xl font-semibold w-full"
               >
-                Learn More
+                {heroData.ctaButtonText}
               </Button>
             </Link>
             <Link href="#programs" className="w-full sm:w-auto">
@@ -68,7 +109,7 @@ export default function HeroSection() {
           <div className="relative w-[90%] sm:w-[85%] md:w-[80%] xl:w-[70%] aspect-[4/3] max-h-[40vh] sm:max-h-[50vh] md:max-h-[60vh] lg:max-h-[65vh]">
             <div className="absolute inset-0 bg-blue-600 rounded-3xl opacity-10 blur-xl" />
             <Image
-              src="/8pointbanner.jpg"
+              src={heroData.heroImage || "/8pointbanner.jpg"}
               alt="TESDA trainees in technical education"
               fill
               className="rounded-3xl shadow-2xl object-contain object-center ring-2 ring-blue-100"
