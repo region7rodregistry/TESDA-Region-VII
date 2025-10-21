@@ -32,6 +32,7 @@ export default function Header() {
     <header
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{ "--header-height": isScrolled && !isHovered ? "0px" : "80px" } as React.CSSProperties}
       className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled && !isHovered ? "-translate-y-full shadow-sm border-b-2 border-blue-600" : "translate-y-0 border-b border-gray-200"}`}
     >
       <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
