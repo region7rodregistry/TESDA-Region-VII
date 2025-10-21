@@ -23,28 +23,28 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-6 py-10 sm:py-12 lg:py-16 overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden"
     >
-      <div className="max-w-5xl w-full text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <div className="max-w-5xl w-full text-center mb-6 sm:mb-8 md:mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
           About TESDA Region VII
         </h2>
-        <div className="w-20 h-1 bg-blue-600 mx-auto mb-6" />
-        <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+        <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6" />
+        <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed px-2 sm:px-0">
           The Technical Education and Skills Development Authority (TESDA) Region VII serves Central Visayas by
           providing quality technical education, skills development, and certification services. Our mission is to
           empower Filipinos with the skills and competencies needed to succeed in the global workforce.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full max-w-6xl">
         {coverage.map((area, index) => (
           <Card
             key={index}
-            className="flex flex-col justify-center items-center text-center p-5 sm:p-6 border border-gray-200 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-blue-600"
+            className="flex flex-col justify-center items-center text-center p-4 sm:p-5 md:p-6 border border-gray-200 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-blue-600"
           >
-            <div className="text-blue-600 mb-3">
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-blue-600 mb-2 sm:mb-3">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -59,10 +59,10 @@ export default function AboutSection() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
               {area.title}
             </h3>
-            <p className="text-gray-600 text-sm leading-snug">
+            <p className="text-gray-600 text-xs sm:text-sm leading-snug">
               {area.description}
             </p>
           </Card>

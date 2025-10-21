@@ -117,22 +117,22 @@ export default function UploadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-20 px-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Manage Compendium Data</h1>
-          <p className="text-gray-600">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Manage Compendium Data</h1>
+          <p className="text-sm sm:text-base text-gray-600">
             Select a category and upload an Excel file to manage compendium data for Bohol, Cebu, Negros Oriental, and Siquijor.
           </p>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <label
             htmlFor="file-upload"
-            className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-blue-300 rounded-xl cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors"
+            className="flex flex-col items-center justify-center w-full h-28 sm:h-32 border-2 border-dashed border-blue-300 rounded-xl cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors"
           >
-            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg className="w-10 h-10 mb-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex flex-col items-center justify-center pt-4 pb-5 sm:pt-5 sm:pb-6">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -140,7 +140,7 @@ export default function UploadPage() {
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 />
               </svg>
-              <p className="mb-2 text-sm text-gray-700 font-medium">
+              <p className="mb-1 sm:mb-2 text-xs sm:text-sm text-gray-700 font-medium">
                 <span className="font-semibold">Click to upload</span> or drag and drop
               </p>
               <p className="text-xs text-gray-500">Excel files (.xlsx, .xls)</p>
@@ -150,18 +150,18 @@ export default function UploadPage() {
         </div>
 
         {status && (
-          <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm font-medium text-gray-700">{status}</p>
+          <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <p className="text-xs sm:text-sm font-medium text-gray-700">{status}</p>
           </div>
         )}
 
         {jsonPreview && (
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">JSON Preview</h3>
+          <div className="mt-4 sm:mt-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">JSON Preview</h3>
             <textarea
               readOnly
               value={jsonPreview}
-              className="w-full h-64 p-4 text-xs font-mono bg-gray-50 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-48 sm:h-56 md:h-64 p-3 sm:p-4 text-xs font-mono bg-gray-50 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         )}

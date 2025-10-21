@@ -31,12 +31,16 @@ interface Scholarship {
 
 export default function ScholarshipsSection() {
   return (
-    <Box sx={{ width: '100%', height: '80vh' }}>
+    <Box sx={{ 
+      width: '100%', 
+      height: { xs: '60vh', sm: '70vh', md: '80vh' },
+      padding: { xs: 1, sm: 2 }
+    }}>
       <iframe
         src="https://script.google.com/macros/s/AKfycbzkf1NElWnt50HmX6as-P-kTehdoA1TZWO2XcmsD1CFKFINgEjAZJYPila4_9vO2YxX/exec"
         width="100%"
         height="100%"
-        style={{ border: "none" }}
+        style={{ border: "none", borderRadius: "8px" }}
         title="Scholarships"
       ></iframe>
     </Box>
