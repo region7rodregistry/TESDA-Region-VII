@@ -3,8 +3,8 @@
 import Image from "next/image"
 
 export default function SecretaryPage() {
-return ( <section className="w-full max-w-screen-xl mx-auto min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 py-16 px-6 lg:px-20 flex flex-col lg:flex-row items-center justify-center gap-10 rounded-2xl shadow-md">
-{/* Left side: Image */} <div className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-lg border-4 border-blue-200">
+return ( <section className="w-full max-w-screen-xl mx-auto min-h-screen py-16 px-6 lg:px-20 flex flex-col lg:flex-row items-center justify-center gap-10 shadow-md">
+{/* Left side: Image */} <div className="relative w-72 h-72 lg:w-96 lg:h-96 overflow-hidden shadow-lg border-4 border-blue-200">
 <Image
 src="/seckiko.png" // replace this path with your actual image
 alt="TESDA Secretary"

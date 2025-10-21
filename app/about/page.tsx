@@ -36,21 +36,24 @@ const sections: Section[] = [
 
 export default function PageTemplate() {
   return (
-    <div className="scroll-smooth">
-      <main>
-        {sections.map((section) => {
-          const Component = section.component
-          return (
-            <section
-              key={section.id}
-              id={section.id}
-              className={`min-h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 ${section.bgColor}`}
-            >
-              <Component />
-            </section>
-          )
-        })}
-      </main>
-    </div>
+    <>
+      <Header />
+      <div className="scroll-smooth">
+        <main>
+          {sections.map((section) => {
+            const Component = section.component
+            return (
+              <section
+                key={section.id}
+                id={section.id}
+                className={`min-h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 ${section.bgColor}`}
+              >
+                <Component />
+              </section>
+            )
+          })}
+        </main>
+      </div>
+    </>
   )
 }
