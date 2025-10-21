@@ -57,9 +57,9 @@ export default function HeroSection() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 pt-4 md:pt-6">
-            <StatItem number="50K+" label="Graduates" />
-            <StatItem number="200+" label="Programs" />
-            <StatItem number="7" label="Provinces" />
+            <StatItem number="87000+" label="Graduates" />
+            <StatItem number="1,200+" label="Programs" />
+            <StatItem number="4" label="Provinces" />
           </div>
         </div>
 

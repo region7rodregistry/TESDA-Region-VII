@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import * as XLSX from "xlsx"
 import { supabase } from "@/lib/supabase"
 
@@ -18,6 +17,25 @@ type ParsedData = {
 export default function UploadPage() {
   const [status, setStatus] = useState<string>("")
   const [jsonPreview, setJsonPreview] = useState<string>("")
+  const [lastUploadTimestamp, setLastUploadTimestamp] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchLastUploadTimestamp = async () => {
+      const { data, error } = await supabase
+        .from("compendium_uploads")
+        .select("timestamp")
+        .order("timestamp", { ascending: false })
+        .limit(1)
+
+      if (error) {
+        console.error("Error fetching last upload timestamp:", error)
+      } else if (data && data.length > 0) {
+        setLastUploadTimestamp(data[0].timestamp)
+      }
+    }
+
+    fetchLastUploadTimestamp()
+  }, [])
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -121,6 +139,11 @@ export default function UploadPage() {
       <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Manage Compendium Data</h1>
+          {lastUploadTimestamp && (
+            <p className="text-sm sm:text-base text-gray-600 mt-1">
+              Compendium as of - {new Date(lastUploadTimestamp).toLocaleString()}
+            </p>
+          )}
           <p className="text-sm sm:text-base text-gray-600">
             Select a category and upload an Excel file to manage compendium data for Bohol, Cebu, Negros Oriental, and Siquijor.
           </p>
