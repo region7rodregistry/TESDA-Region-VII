@@ -41,6 +41,7 @@ export default function HeroPageSection() {
   const [availableImages, setAvailableImages] = useState<ImageItem[]>([])
   const [loadingImages, setLoadingImages] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [viewType, setViewType] = useState<'desktop' | 'mobile'>('desktop');
 
   const loadAvailableImages = async () => {
     setLoadingImages(true)
@@ -291,17 +292,36 @@ export default function HeroPageSection() {
         </Box>
 
         {/* Preview Panel */}
-        <Box sx={{ flex: 1 }}>
-          <Card>
+        <Box sx={{ flex: 1, position: 'relative' }}>
+          <Card sx={{ height: '100%' }}>
             <CardHeader title="Live Preview" />
-            <CardContent sx={{ p: 0 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, p: 1, borderBottom: '1px solid #e0e0e0' }}>
+                <Button 
+                  variant={viewType === 'desktop' ? 'contained' : 'outlined'} 
+                  onClick={() => setViewType('desktop')}
+                  size="small"
+                >
+                  Desktop
+                </Button>
+                <Button 
+                  variant={viewType === 'mobile' ? 'contained' : 'outlined'} 
+                  onClick={() => setViewType('mobile')}
+                  size="small"
+                >
+                  Mobile
+                </Button>
+              </Box>
+            <CardContent sx={{ p: 0, height: 'calc(100% - 72px - 48px)' }}>
               <Box
                 sx={{
-                  width: "100%",
-                  height: "600px",
+                  width: viewType === 'desktop' ? '100%' : '375px', // Common mobile width
+                  height: viewType === 'desktop' ? '100%' : '667px', // Common mobile height
                   border: "none",
                   borderRadius: "8px",
                   overflow: "hidden",
+                  margin: '0 auto', // Center the mobile view
+                  boxShadow: viewType === 'mobile' ? '0 0 10px rgba(0,0,0,0.1)' : 'none', // Add shadow for mobile view
+                  transition: 'all 0.3s ease-in-out', // Smooth transition
                 }}
               >
                 <iframe
