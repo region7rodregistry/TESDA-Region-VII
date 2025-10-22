@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
-import AboutRegion7 from "./aboutsec/about-region7"
+import { Button } from "@/components/ui/button" // Import Button component
+import Link from "next/link" // Import Link for navigation
 
 export default function AboutSection() {
   const coverage = [
@@ -13,7 +14,7 @@ export default function AboutSection() {
     },
     {
       title: "Siquijor",
-      description: "Primarily Tourism, Handicrafts, and Agriculture. TESDA emphasizes skills for sustainable tourism, local crafts, and small-scale farmingr",
+      description: "Primarily Tourism, Handicrafts, and Agriculture. TESDA emphasizes skills for sustainable tourism, local crafts, and small-scale farming",
     },
     {
       title: "Negros Oriental",
@@ -26,7 +27,7 @@ export default function AboutSection() {
       id="about"
       className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden"
     >
-      <AboutRegion7 />
+
       <div className="max-w-5xl w-full text-center mb-6 sm:mb-8 md:mb-10">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
           About TESDA Region VII
@@ -37,6 +38,11 @@ export default function AboutSection() {
           providing quality technical education, skills development, and certification services. Our mission is to
           empower Filipinos with the skills and competencies needed to succeed in the global workforce.
         </p>
+        <Link href="/about" passHref>
+          <Button className="mt-6 px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition-colors duration-300">
+            View Full About Page
+          </Button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full max-w-6xl">
