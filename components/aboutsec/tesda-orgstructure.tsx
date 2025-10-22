@@ -1,11 +1,35 @@
+import Image from "next/image";
+import React, { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+
 export default function TesdaOrgStructure() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="max-w-4xl w-full text-center">
-      <h2 className="text-5xl sm:text-6xl font-bold text-slate-900 mb-8 text-balance">TESDA Org Structure</h2>
-      {/* Add your code for this section here */}
-      <div className="text-lg text-slate-600 leading-relaxed">
-        <p>Content placeholder for TESDA Org Structure</p>
+    <div className="container mx-auto py-8">
+      <div className="flex justify-center">
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <DialogTrigger asChild>
+            <Image
+              src="/orgchart.png"
+              alt="TESDA VII Organizational Structure"
+              width={800}
+              height={600}
+              layout="responsive"
+              className="cursor-pointer"
+            />
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl">
+            <Image
+              src="/orgchart.png"
+              alt="TESDA VII Organizational Structure"
+              width={1600}
+              height={1200}
+              layout="responsive"
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
-  )
+  );
 }

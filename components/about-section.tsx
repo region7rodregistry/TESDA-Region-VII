@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card"
+import AboutRegion7 from "./aboutsec/about-region7"
 
 export default function AboutSection() {
   const coverage = [
@@ -25,6 +26,7 @@ export default function AboutSection() {
       id="about"
       className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden"
     >
+      <AboutRegion7 />
       <div className="max-w-5xl w-full text-center mb-6 sm:mb-8 md:mb-10">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
           About TESDA Region VII

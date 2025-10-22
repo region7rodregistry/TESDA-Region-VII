@@ -28,6 +28,15 @@ The new TESDA slogan and logo demonstrate the Agency's stronger advocacy to give
 Kapag sama-sama, sa TESDA, Kayang Kaya!
     </p>
   </div>
+
+  {/* Image on the lower right */}
+  <Image
+    src="/footnote.png" // User's specified image
+    alt="Decorative Image"
+    width={200} // Adjust width as needed
+    height={200} // Adjust height as needed
+    className="absolute bottom-0 right-0 lg:bottom-10 lg:right-10"
+  />
 </section>
 
 )
