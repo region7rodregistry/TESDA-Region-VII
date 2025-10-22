@@ -37,6 +37,22 @@ export default function UploadPage() {
     fetchLastUploadTimestamp()
   }, [])
 
+  const deleteAllCompendiumUploads = async () => {
+    setStatus("🗑️ Deleting previous data...")
+    const { error } = await supabase
+      .from("compendium_uploads")
+      .delete()
+      .neq("sheetName", "PLACEHOLDER_TO_DELETE_ALL"); // Using a condition that's always true to delete all
+  
+    if (error) {
+      console.error("Error deleting previous compendium uploads:", error)
+      setStatus(`❌ Error deleting previous data: ${error.message}`)
+      return false
+    }
+    console.log("Previous compendium uploads deleted successfully.")
+    return true
+  }
+
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (!file) return
@@ -45,6 +61,13 @@ export default function UploadPage() {
     setJsonPreview("")
 
     try {
+      // Delete all previous entries before uploading new ones
+      const deletionSuccessful = await deleteAllCompendiumUploads()
+      if (!deletionSuccessful) {
+        setStatus("❌ Failed to delete previous data. Aborting upload.")
+        return
+      }
+
       // Read the file
       const arrayBuffer = await file.arrayBuffer()
       const workbook = XLSX.read(arrayBuffer, { type: "array" })
