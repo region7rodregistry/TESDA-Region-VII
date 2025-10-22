@@ -48,7 +48,7 @@ export default function ProgramsSection() {
           />
         </svg>
       ),
-      link: "/display",
+      link: "/training-centers",
     },
     {
       title: "NTTC Monitoring",

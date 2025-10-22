@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">© {new Date().getFullYear()} TESDA Region VII. All rights reserved.</p>
             <p className="text-xs sm:text-sm text-gray-600 text-center sm:text-right">
-              Developed by <span className="font-medium text-blue-600">TESDA Region VII ICT Unit</span>
+              Developed by <span className="font-medium text-blue-600">TESDA Region VII - ICT Unit</span>
             </p>
           </div>
         </div>

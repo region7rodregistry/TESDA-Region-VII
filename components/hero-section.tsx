@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { getHeroContent } from "@/lib/hero-service"
+import { FaFacebook, FaInstagram, FaThreads, FaXTwitter } from "react-icons/fa6";
 
 export default function HeroSection() {
   const [heroData, setHeroData] = useState({
@@ -116,30 +117,46 @@ export default function HeroSection() {
               priority
             />
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-3 sm:-bottom-5 left-1/2 -translate-x-1/2 sm:left-auto sm:-left-5 bg-white p-2 sm:p-3 md:p-4 rounded-2xl shadow-xl border border-blue-100 max-w-[calc(100%-1rem)] sm:max-w-[200px] md:max-w-[220px]">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
-                  <img
-                    src="/TUV.png" // Replace with your logo path
-                    alt="Quality Certified Logo"
-                    className="w-full h-full object-cover"
-                  />
+            {/* Combined Floating badge */}
+            <div className="absolute -bottom-1 sm:-bottom-2 left-1/2 -translate-x-1/2 bg-blue-50/80 backdrop-blur-sm p-0.5 sm:p-1 md:p-2 rounded-2xl shadow-xl border border-blue-200/50 max-w-[calc(100%-1rem)] sm:max-w-max md:max-w-none">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    <img
+                      src="/TUV.png" // Replace with your logo path
+                      alt="Quality Certified Logo"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-900 leading-tight">
+                      Quality Certified
+                    </p>
+                    <p className="text-[0.65rem] text-gray-500 leading-tight">ISO Accredited</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs sm:text-sm font-semibold text-gray-900">
-                    Quality Certified
-                  </p>
-                  <p className="text-xs text-gray-500">ISO Accredited</p>
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <Link href="https://www.facebook.com/tesdasietecentralvisayas" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                    <FaFacebook className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Link>
+                  <Link href="https://twitter.com/tesdaph" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900">
+                    <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Link>
+                  <Link href="https://www.instagram.com/tesda_official/" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800">
+                    <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Link>
+                  <Link href="https://www.threads.net/@tesda_official" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900">
+                    <FaThreads className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
+      </div>
     </section>
   )
 }
