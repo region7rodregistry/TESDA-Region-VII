@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { getHeroContent } from "@/lib/hero-service"
+import { trackCTAClick } from "@/lib/analytics"
 import { FaFacebook, FaInstagram, FaThreads, FaXTwitter } from "react-icons/fa6";
 
 export default function HeroSection() {
@@ -78,7 +79,11 @@ export default function HeroSection() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
-            <Link href={heroData.ctaButtonLink || "/"} className="w-full sm:w-auto">
+            <Link 
+              href={heroData.ctaButtonLink || "/"} 
+              className="w-full sm:w-auto"
+              onClick={() => trackCTAClick(heroData.ctaButtonText, heroData.ctaButtonLink, "/")}
+            >
               <Button
                 size="lg"
                 className="bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 lg:py-6 rounded-xl font-semibold w-full"
@@ -86,7 +91,11 @@ export default function HeroSection() {
                 {heroData.ctaButtonText}
               </Button>
             </Link>
-            <Link href="#programs" className="w-full sm:w-auto">
+            <Link 
+              href="#programs" 
+              className="w-full sm:w-auto"
+              onClick={() => trackCTAClick("View Programs", "#programs", "/")}
+            >
               <Button
                 size="lg"
                 variant="outline"

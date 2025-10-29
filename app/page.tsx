@@ -1,11 +1,19 @@
+"use client"
+
+import { useEffect } from "react"
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import AboutSection from "@/components/about-section"
 import ProgramsSection from "@/components/programs-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
+import { trackPageView } from "@/lib/analytics"
 
 export default function Home() {
+  useEffect(() => {
+    trackPageView("/", "Home Page")
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       <Header />

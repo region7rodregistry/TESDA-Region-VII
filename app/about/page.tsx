@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useEffect } from "react"
 import Header from "@/components/header"
 import SecretaryPage from "@/components/aboutsec/secretary-page"
 import BriefHistory from "@/components/aboutsec/brief-history"
@@ -10,6 +11,7 @@ import TesdaOrgStructure from "@/components/aboutsec/tesda-orgstructure"
 import CoreBusiness from "@/components/aboutsec/core-business"
 import AboutRegion7 from "@/components/aboutsec/about-region7"
 import Region7OperatingUnits from "@/components/aboutsec/region7-operating-units"
+import { trackPageView } from "@/lib/analytics"
 
 interface Section {
   id: string
@@ -35,6 +37,10 @@ const sections: Section[] = [
 ]
 
 export default function PageTemplate() {
+  useEffect(() => {
+    trackPageView("/about", "About TESDA Region VII")
+  }, [])
+
   return (
     <>
       <Header />

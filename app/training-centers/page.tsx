@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase"
 import { ChevronLeft, ChevronRight, Search, Download } from "lucide-react"
 import Image from "next/image"
 import Header from "@/components/header" // Import the main Header component
+import { trackPageView } from "@/lib/analytics"
 
 interface RowData {
   B: string
@@ -33,6 +34,9 @@ export default function DisplayPage() {
   const [debouncedSearch, setDebouncedSearch] = useState("")
 
   useEffect(() => {
+    // Track page view
+    trackPageView("/training-centers", "Training Centers")
+    
     const fetchData = async () => {
       try {
         const { data, error } = await supabase.from("compendium_uploads").select("sheetName, data")

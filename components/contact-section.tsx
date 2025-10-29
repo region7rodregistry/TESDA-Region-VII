@@ -1,9 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { trackContactInteraction } from "@/lib/analytics"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,11 @@ export default function ContactSection() {
     message: "",
   })
   const [loading, setLoading] = useState(false)
+
+  // Track when contact form is viewed
+  useEffect(() => {
+    trackContactInteraction("form_view")
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,14 +31,20 @@ export default function ContactSection() {
       })
 
       if (res.ok) {
+        // Track successful form submission
+        trackContactInteraction("form_submit", undefined, true)
         alert("✅ Message sent successfully!")
         setFormData({ name: "", email: "", message: "" })
       } else {
+        // Track failed form submission
+        trackContactInteraction("form_submit", undefined, false)
         const data = await res.json()
         console.error("Error:", data)
         alert("❌ Failed to send message. Please try again later.")
       }
     } catch (error) {
+      // Track failed form submission
+      trackContactInteraction("form_submit", undefined, false)
       console.error("Error sending message:", error)
       alert("⚠️ Something went wrong while sending your message.")
     } finally {
@@ -45,6 +57,10 @@ export default function ContactSection() {
       ...formData,
       [e.target.name]: e.target.value,
     })
+  }
+
+  const handleFieldFocus = (fieldName: string) => {
+    trackContactInteraction("field_focus", fieldName)
   }
 
   return (
@@ -74,6 +90,7 @@ export default function ContactSection() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onFocus={() => handleFieldFocus("name")}
                   required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
                   placeholder="Your full name"
@@ -90,6 +107,7 @@ export default function ContactSection() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onFocus={() => handleFieldFocus("email")}
                   required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200"
                   placeholder="your.email@example.com"
@@ -105,6 +123,7 @@ export default function ContactSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  onFocus={() => handleFieldFocus("message")}
                   required
                   rows={3}
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition-colors duration-200 resize-none"

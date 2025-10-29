@@ -1,9 +1,11 @@
 "use client"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import ScholarshipsSection from "@/components/sections/scholarships-section"
 import PTCACSSection from "@/components/sections/ptcacs-section"
 import UTPRASSection from "@/components/sections/utpras-section"
 import HeroPageSection from "@/components/sections/hero-page-section"
+import AnalyticsSection from "@/components/sections/analytics-section"
 import {
   Menu,
   X,
@@ -17,6 +19,7 @@ import {
   FileText,
   ClipboardList,
   ImageIcon,
+  BarChart3,
 } from "lucide-react"
 import { createSupabaseClient } from "@/lib/supabase" // Import Supabase client
 
@@ -26,8 +29,45 @@ export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const supabase = createSupabaseClient() // Initialize Supabase client
+  const router = useRouter()
+
+  // Check authentication status on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) {
+          router.push("/admin")
+          return
+        }
+        setIsAuthenticated(true)
+        setIsLoading(false)
+      } catch (error) {
+        console.error("Auth check error:", error)
+        router.push("/admin")
+      }
+    }
+
+    checkAuth()
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        router.push("/admin")
+      } else {
+        setIsAuthenticated(true)
+        setIsLoading(false)
+      }
+    })
+
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [router, supabase])
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,12 +86,19 @@ export default function AdminDashboard() {
   }
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    window.location.href = "/"; // Redirect to home page after logout
-  };
+    try {
+      await supabase.auth.signOut()
+      router.push("/admin")
+    } catch (error) {
+      console.error("Logout error:", error)
+      // Force redirect even if there's an error
+      router.push("/admin")
+    }
+  }
 
   const navigationItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { id: "analytics", label: "Analytics", icon: BarChart3 },
     { id: "scholarships", label: "Scholarships", icon: BookOpen },
     { id: "ptcacs", label: "PTCACs", icon: FileText },
     { id: "utpras", label: "UTPRAS", icon: ClipboardList },
@@ -60,6 +107,8 @@ export default function AdminDashboard() {
 
   const renderSection = () => {
     switch (activeSection) {
+      case "analytics":
+        return <AnalyticsSection />
       case "scholarships":
         return <ScholarshipsSection />
       case "ptcacs":
@@ -76,6 +125,18 @@ export default function AdminDashboard() {
           </div>
         )
     }
+  }
+
+  // Show loading state while checking authentication
+  if (isLoading || !isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 to-blue-900">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-white text-lg font-semibold">Loading...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
